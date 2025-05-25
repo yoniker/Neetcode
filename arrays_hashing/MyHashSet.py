@@ -2,6 +2,8 @@
 
 class MyHashSet:
 
+    MIN_NUM_ELEMENTS = 5
+
     def _my_hash_function(self,int_key): #Simply perform a modulo operation
         return int_key % self.allocated_memory_size
 
@@ -20,7 +22,7 @@ class MyHashSet:
             return
 
     def __init__(self):
-        self._rebuild(5)
+        self._rebuild(MIN_NUM_ELEMENTS)
         return
 
 
@@ -39,7 +41,7 @@ class MyHashSet:
             return
         self.data[self._my_hash_function(key)].remove(key)
         self.num_elements -= 1
-        if self.allocated_memory_size> 5 and self.num_elements < self.allocated_memory_size/2:
+        if self.allocated_memory_size> MIN_NUM_ELEMENTS and self.num_elements < self.allocated_memory_size/2:
             self._rebuild(new_allocated_memory_size = self.num_elements * 2 )
 
         

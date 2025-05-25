@@ -22,7 +22,7 @@ class MyHashSet:
             return
 
     def __init__(self):
-        self._rebuild(MIN_NUM_ELEMENTS)
+        self._rebuild(self.MIN_NUM_ELEMENTS)
         return
 
 

@@ -35,6 +35,15 @@ class Solution:
                 return memPad[i]
             currentNodeAtTrie = wordDict.root
             for j in range(i,len(s)):
+                if s[j] not in currentNodeAtTrie.letterEdges:
+                    return False
+                currentNodeAtTrie = currentNodeAtTrie.letterEdges[s[j]]
+                #if I can interpret this as a word then I can try the substring without it
+                if currentNodeAtTrie.isWord:
+                    if isInterprateable(j):
+                        memPad[i] = True
+                        return memPad
+        return isInterprateable(0)
 
 
         
